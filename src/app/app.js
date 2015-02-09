@@ -1,13 +1,14 @@
 angular.module( 'ngBoilerplate', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
+  'ngBoilerplate.binary',
   'ngBoilerplate.about',
+  'ngBoilerplate.player',
   'ui.router'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+  $urlRouterProvider.otherwise( '/binary' );
 })
 
 .run( function run () {
@@ -22,4 +23,5 @@ angular.module( 'ngBoilerplate', [
 })
 
 ;
+
 

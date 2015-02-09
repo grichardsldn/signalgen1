@@ -1,7 +1,8 @@
 angular.module( 'ngBoilerplate.about', [
   'ui.router',
   'placeholders',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngBoilerplate.player'
 ])
 
 .config(function config( $stateProvider ) {
@@ -17,13 +18,14 @@ angular.module( 'ngBoilerplate.about', [
   });
 })
 
-.controller( 'AboutCtrl', function AboutCtrl( $scope ) {
+.controller( 'AboutCtrl', function AboutCtrl( $scope, playerService ) {
   // This is simple a demo for UI Boostrap.
   $scope.dropdownDemoItems = [
     "The first choice!",
     "And another choice for you.",
     "but wait! A third!"
   ];
+  $scope.message = playerService.count();
 })
 
 ;

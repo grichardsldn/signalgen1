@@ -1,7 +1,8 @@
 angular.module( 'ngBoilerplate.binary', [
   'ui.router',
   'placeholders',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngBoilerplate.player'
 ])
 
 .config(function config( $stateProvider ) {
@@ -17,7 +18,31 @@ angular.module( 'ngBoilerplate.binary', [
   });
 })
 
-.controller( 'BinaryCtrl', function BinaryCtrl( $scope ) {
+.controller( 'BinaryCtrl', function BinaryCtrl( $scope, playerService ) {
+
+  $scope.update = function( ) {
+    $scope.message = playerService.getStatus();
+  };
+
+  $scope.callCount = function() {
+    console.log("GDR: callCount()" );
+    playerService.count();
+    $scope.update( );
+  };
+
+  $scope.startPow = function() {
+    console.log("GDR: startPow()");
+    playerService.startPow();
+    $scope.update( );
+  };
+  
+  $scope.stopPow = function() {
+    console.log("GDR: stopPow()");
+    playerService.stopPow();
+    $scope.update( );
+  };
+  
+  $scope.update();
 })
 
 ;
