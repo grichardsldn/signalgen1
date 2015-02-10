@@ -25,7 +25,7 @@ angular.module('ngBoilerplate.player', [])
     audiocontext = new AudioContext();
     destnode = audiocontext.destination;
     gainnode = audiocontext.createGain();
-    gainnode.gain.value = 0.2;
+    gainnode.gain.value = 0.3;
     gainnode.connect( destnode);
     this.setState('available');
   } catch  (e) {
