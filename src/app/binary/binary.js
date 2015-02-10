@@ -23,6 +23,8 @@ angular.module( 'ngBoilerplate.binary', [
   // set our callback
   playerService.setStateChangeCallback( function( state ) {
     console.log("BinaryCtrl.callback: state=" + state );
+    $scope.update();
+    $scope.$apply();
   } );
 
   $scope.update = function( ) {
