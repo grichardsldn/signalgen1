@@ -27,7 +27,7 @@ angular.module( 'ngBoilerplate.binary', [
     $scope.$apply();
   } );
 
-  $scope.framingSetting = 1.00;
+  $scope.framingSetting = "15"; 
 
   $scope.update = function( ) {
     $scope.message = playerService.getStatus();
