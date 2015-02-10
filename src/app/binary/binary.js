@@ -19,6 +19,11 @@ angular.module( 'ngBoilerplate.binary', [
 })
 
 .controller( 'BinaryCtrl', function BinaryCtrl( $scope, playerService ) {
+  
+  // set our callback
+  playerService.setStateChangeCallback( function( state ) {
+    console.log("BinaryCtrl.callback: state=" + state );
+  } );
 
   $scope.update = function( ) {
     $scope.message = playerService.getStatus();

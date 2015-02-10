@@ -12,6 +12,10 @@ angular.module('ngBoilerplate.player', [])
   this.setState = function( newstate ) {
     console.log( 'state: ' + state + ' -> ' + newstate);
     state = newstate;
+    if( statechange_callback !== undefined ) {
+      console.log("Firing callback");
+      statechange_callback( newstate );
+    }
   };
 
 
@@ -20,6 +24,7 @@ angular.module('ngBoilerplate.player', [])
   var destnode; // the final output node
   var gainnode; 
   var absn; // audio buffer source node
+  var statechange_callback;
 
   try {
     audiocontext = new AudioContext();
@@ -37,6 +42,11 @@ angular.module('ngBoilerplate.player', [])
   /* unavailable, available, playing */
   this.getStatus = function() {
     return state;
+  };
+
+  this.setStateChangeCallback = function( cb ) {
+    console.log("setStateChangeCallback()");
+    statechange_callback = cb;
   };
 
   this.startPow = function() {
