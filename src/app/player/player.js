@@ -19,7 +19,7 @@ angular.module('ngBoilerplate.player', [])
   var audiocontext;
   var destnode; // the final output node
   var gainnode; 
-  var osc;
+  var absn; // audio buffer source node
 
   try {
     audiocontext = new AudioContext();
@@ -42,16 +42,35 @@ angular.module('ngBoilerplate.player', [])
   this.startPow = function() {
     if( state === 'available' ) {
       this.setState('playing');
-      osc = audiocontext.createOscillator();
-      osc.frequency.value = 220;
-      osc.start(0);
-      osc.connect(gainnode);
+      // create a buffer and play it
+      var ab = audiocontext.createBuffer( 1, 48000 * 2, 48000 );
+      var data = ab.getChannelData(0);
+      var rate = 0.009;
+
+      var i = 0;
+      var level = 0;
+      var left = 0;
+      var period = 5;
+      for (i = 0 ; i < data.length ; i++ ) {
+        data[i] = level;
+        if( left < 0 ) {
+          level = Math.random() * 2 - 1; // reset the level
+          left = Math.random() * period; // wait a random time based on freq
+          period += rate; // lower the period
+        }
+        left--;
+      }
+      console.log("built the buffer");
+      absn = audiocontext.createBufferSource();
+      absn.buffer = ab;
+      absn.connect( gainnode);
+      absn.start();
     }
   };
 
   this.stopPow = function() {
     if( state === 'playing' ) {
-      osc.disconnect(gainnode);
+      absn.disconnect(gainnode);
       this.setState('available');
     }
   };
