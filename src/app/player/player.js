@@ -49,13 +49,14 @@ angular.module('ngBoilerplate.player', [])
     statechange_callback = cb;
   };
 
-  this.startPow = function() {
+  this.startPow = function( rate ) {
+    rate *= 1;
+    console.log('startPow(' + rate + ')');
     if( state === 'available' ) {
       this.setState('playing');
       // create a buffer and play it
       var ab = audiocontext.createBuffer( 1, 48000 * 2, 48000 );
       var data = ab.getChannelData(0);
-      var rate = 0.009;
 
       var i = 0;
       var level = 0;

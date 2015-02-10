@@ -27,6 +27,8 @@ angular.module( 'ngBoilerplate.binary', [
     $scope.$apply();
   } );
 
+  $scope.framingSetting = 1.00;
+
   $scope.update = function( ) {
     $scope.message = playerService.getStatus();
   };
@@ -39,7 +41,7 @@ angular.module( 'ngBoilerplate.binary', [
 
   $scope.startPow = function() {
     console.log("GDR: startPow()");
-    playerService.startPow();
+    playerService.startPow($scope.framingSetting);
     $scope.update( );
   };
   
