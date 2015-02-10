@@ -64,6 +64,11 @@ angular.module('ngBoilerplate.player', [])
       absn = audiocontext.createBufferSource();
       absn.buffer = ab;
       absn.connect( gainnode);
+      var me = this;
+      absn.onended = function() {
+        console.log("AudioBufferSourceNode ended");  
+        me.setState('available');
+      };
       absn.start();
     }
   };
