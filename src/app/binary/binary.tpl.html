@@ -1,20 +1,43 @@
-<div class="row">
-  <h1 class="page-header">
-    Binary Packet Generator
-  </h1>
-  <p>
-    message={{ message }}
-  </p>
-    <div class="btn-group">
-        <label class="btn btn-primary" ng-model="framingSetting" 
-          btn-radio="'0.09'">Strike</label>
-        <label class="btn btn-primary" ng-model="framingSetting" 
-          btn-radio="'1.002'">Pow</label>
-        <label class="btn btn-primary" ng-model="framingSetting" 
-          btn-radio="'15'">Rumble</label>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel panel-primary"> 
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Binary Packet Generator
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="btn-group">
+              <label class="btn btn-default" ng-model="framingSetting" 
+                btn-radio="'0.09'">Strike</label>
+              <label class="btn btn-default" ng-model="framingSetting" 
+                btn-radio="'1.002'">Pow</label>
+              <label class="btn btn-default" ng-model="framingSetting" 
+                btn-radio="'15'">Rumble</label>
+          </div>
+        </div>
+      </div>
     </div>
-    <input type="button" value="startPow()" ng-click="startPow()"/>
-    <input type="button" value="stopPow()" ng-click="stopPow()"/>
-
+    <div class="col-sm-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Audio 
+          </h3>
+        </div>
+        <div class="panel-body">
+          <p class="text-default">
+            message={{ message }}
+          </p>
+          <i class="fa fa-play btn btn-primary" ng-click="startPow()"></i>
+          <i class="fa fa-stop btn btn-default" ng-click="stopPow()"></i>
+          <!--
+          <input class="btn btn-primary fa fa-search" type="button" value="Play" ng-click="startPow()">
+          <input class="btn btn-primary" type="button" value="Stop" ng-click="stopPow()"/>
+          ->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
