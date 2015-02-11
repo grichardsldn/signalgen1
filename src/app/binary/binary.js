@@ -2,7 +2,8 @@ angular.module( 'ngBoilerplate.binary', [
   'ui.router',
   'placeholders',
   'ui.bootstrap',
-  'ngBoilerplate.player'
+  'ngBoilerplate.player',
+  'ngBoilerplate.binarysynth'
 ])
 
 .config(function config( $stateProvider ) {
@@ -18,7 +19,7 @@ angular.module( 'ngBoilerplate.binary', [
   });
 })
 
-.controller( 'BinaryCtrl', function BinaryCtrl( $scope, playerService ) {
+.controller( 'BinaryCtrl', function BinaryCtrl( $scope, playerService, binarySynth ) {
   
   // set our callback
   playerService.setStateChangeCallback( function( state ) {
@@ -41,7 +42,9 @@ angular.module( 'ngBoilerplate.binary', [
 
   $scope.startPow = function() {
     console.log("GDR: startPow()");
-    playerService.startPow($scope.framingSetting);
+    var params;
+    playerService.startSynth( binarySynth, params );
+    //playerService.startPow($scope.framingSetting);
     $scope.update( );
   };
   

@@ -49,6 +49,33 @@ angular.module('ngBoilerplate.player', [])
     statechange_callback = cb;
   };
 
+  this.startSynth = function( synth, params ) {
+    console.log('startSynth()');
+    if( state === 'available' ) {
+      this.setState('playing');
+      var raw_data = synth( params );
+
+      // create a buffer
+      var ab = audiocontext.createBuffer( 1, raw_data.length, 48000 );
+      var data = ab.getChannelData(0);
+
+      // copy the data from the raw_data
+      for (i = 0 ; i < data.length ; i++ ) {
+        data[i] = raw_data[i];
+      }
+      console.log("copied the buffer");
+      absn = audiocontext.createBufferSource();
+      absn.buffer = ab;
+      absn.connect( gainnode);
+      var me = this;
+      absn.onended = function() {
+        console.log("AudioBufferSourceNode ended");  
+        me.setState('available');
+      };
+      absn.start();
+    }
+  };
+
   this.startPow = function( rate ) {
     rate *= 1;
     console.log('startPow(' + rate + ')');

@@ -4,6 +4,7 @@ angular.module( 'ngBoilerplate', [
   'ngBoilerplate.binary',
   'ngBoilerplate.about',
   'ngBoilerplate.player',
+  'ngBoilerplate.binarysynth',
   'ui.router'
 ])
 
