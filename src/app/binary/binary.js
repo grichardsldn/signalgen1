@@ -42,9 +42,22 @@ angular.module( 'ngBoilerplate.binary', [
 
   $scope.startPow = function() {
     console.log("GDR: startPow()");
-    var params;
+    var params = {
+      text: 'HELLO WORLD',
+      period: 30,
+      start_bits: 2,
+      stop_bits: 2,
+      frame_gap: 20,
+      repeat_count: 0,
+      sevenbit: 0,
+      big_endian: 0,
+      parity: 1,
+      checksum: 1,
+      mtu: 1500,
+      encoding: 'NRZ',
+      encryption: 0
+    };
     playerService.startSynth( binarySynth, params );
-    //playerService.startPow($scope.framingSetting);
     $scope.update( );
   };
   
