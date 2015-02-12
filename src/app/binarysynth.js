@@ -48,10 +48,18 @@ angular.module('ngBoilerplate.binarysynth', [])
 
   // write a value as 32 unsigned logical bits 
   var write32 = function( val, params ) {
-    // NOT YET IMPLEMENTED, JUST WRITE ZEROS
-    for( i = 0 ; i < 32 ; i++ ) {
-      writeBit( 0, params );
-    }
+    var i;
+    if( params.big_endian ) {
+      for( i = 0 ; i < 32 ; i++ ) {
+        writeBit( (( val & 0x80000000)>0)?1:0, params );
+        val <<=1;
+      }
+    } else {
+      for( i = 0 ; i < 32 ; i++ ) {
+        writeBit( val & 1, params );
+        val >>= 1;
+      }
+    } 
   };
 
   // write a value as 7 or 8 logics bits.
