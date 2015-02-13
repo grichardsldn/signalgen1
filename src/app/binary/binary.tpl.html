@@ -8,76 +8,115 @@
           </h3>
         </div>
         <div class="panel-body">
-          <h4>Payload</h4>
-          <div class="row">
-            <!-- TEXT -->
-            <textarea 
-              style="resize: none;" 
-              rows='3'
-              class="col-xs-12" 
-              ng-model="param_text">
-            </textarea>
-          </div>
-          <div class="row">
-            <!-- REPEAT COUNT --> 
-            <span class="col-xs-4">
-              <p>Char repeat: <input ng-model="param_repeat_count" size="3"> </p>
-            </span>
-            <!-- ENCRYPTION -->
-              <input type="checkbox" ng-model="param_encryption"
-                ng-true-value="1" ng-false-value="0">
-                Encrypted
-              </input>
-          </div>
-          <div class="row">
-            <!-- PERIOD -->
-            <span class="col-xs-4">
-              <p>Period: <input ng-model="param_period" size="5">ms </p>
-            </span>
-        
-            <!-- ENCODING -->
-            <span class="col-xs-4">
-              <p>Encoding:</p>
-              <div class="btn-group">
-                <label class="btn btn-default" ng-model="param_encoding" 
-                    btn-radio="'NRZ'">NRZ</label>
-                <label class="btn btn-default" ng-model="param_encoding" 
-                    btn-radio="'RZ'">RZ</label>
+          <div class="container">
+            <div class="row">
+              <!-- TEXT -->
+              <textarea 
+                rows='3'
+                style="resize: none;" 
+                class="col-xs-12" 
+                ng-model="param_text">
+              </textarea>
+            </div>
+            <div class="row">
+              <!-- REPEAT COUNT --> 
+              <span class="col-xs-4">
+                <p>Char repeat: <input ng-model="param_repeat_count" size="3"> </p>
+              </span>
+              <!-- ENCRYPTION -->
+              <span class="col-xs-4">
+                <input type="checkbox" ng-model="param_encryption"
+                  ng-true-value="1" ng-false-value="0">
+                  Encrypted
+                </input>
+              </span>
+              <!-- CHECKSUM -->
+              <span class="col-xs-4">
+                <input type="checkbox" ng-model="param_checksum"
+                  ng-true-value="1" ng-false-value="0">
+                  Checksum 
+                </input>
+              </span>
+            </div>
+            <div class="row">
+              <div class="col-xs-4">
+                <!-- BIG_ENDIAN -->
+                <p>Endianism:</p>
+                <div class="btn-group">
+                  <label class="btn btn-default" ng-model="param_big_endian" 
+                     btn-radio="'1'">Big</label>
+                  <label class="btn btn-default" ng-model="param_big_endian" 
+                     btn-radio="'0'">Little</label>
+                </div>
               </div>
-            </span>
-            <span class="cp-sm-4">
-            
-              <p>Else</p>
-            </span>
-          </div>
-          <div class="row">
-
-            <!-- START BITS -->
-            <span class="col-xs-4">
-              <!--Start bits: -->
-              <p>Start bits:</p>
-              <div class="btn-group">
-                 <label class="btn btn-default" ng-model="param_start_bits" 
+              <div class="col-xs-4">
+                <!-- 7/8 BIT -->
+                <p>Data:</p>
+                  <div class="btn-group">
+                    <label class="btn btn-default" ng-model="param_sevenbit" 
+                      btn-radio="'1'">7-bit</label>
+                    <label class="btn btn-default" ng-model="param_sevenbit" 
+                      btn-radio="'0'">8-bit</label>
+                  </div>
+                </p>
+              </div>
+              <div class="col-xs-4">
+                <!-- PARITY -->
+                <p>Parity:</p>
+                  <div class="btn-group">
+                    <label class="btn btn-default" ng-model="param_parity" 
+                      btn-radio="'0'">None</label>
+                    <label class="btn btn-default" ng-model="param_parity" 
+                      btn-radio="'1'">Odd</label>
+                    <label class="btn btn-default" ng-model="param_parity" 
+                      btn-radio="'2'">Even</label>
+                  </div>
+                </p>
+              </div>
+          
+          
+              <!-- ENCODING -->
+              <span class="col-xs-4">
+                <p>Encoding:</p>
+                <div class="btn-group">
+                  <label class="btn btn-default" ng-model="param_encoding" 
+                      btn-radio="'NRZ'">NRZ</label>
+                  <label class="btn btn-default" ng-model="param_encoding" 
+                      btn-radio="'RZ'">RZ</label>
+                </div>
+              </span>
+              <span class="cp-sm-4">
+                <p>Else</p>
+              </span>
+            </div>
+            <div class="row">
+              <!-- START BITS -->
+              <span class="col-xs-4">
+                <!--Start bits: -->
+                <p>Start bits:</p>
+                <div class="btn-group">
+                   <label class="btn btn-default" ng-model="param_start_bits" 
+                      btn-radio="'0'">None</label>
+                   <label class="btn btn-default" ng-model="param_start_bits" 
+                     btn-radio="'1'">1</label>
+                   <label class="btn btn-default" ng-model="param_start_bits" 
+                      btn-radio="'2'">2</label>
+                 </div>
+              </span>
+                
+              <!-- STOP BITS -->
+              <span class="col-xs-4">
+                <p>Stop bits:</p>
+                <div class="btn-group">
+                  <label class="btn btn-default" ng-model="param_stop_bits" 
                     btn-radio="'0'">None</label>
-                 <label class="btn btn-default" ng-model="param_start_bits" 
-                   btn-radio="'1'">1</label>
-                 <label class="btn btn-default" ng-model="param_start_bits" 
-                    btn-radio="'2'">2</label>
-               </div>
-            </span>
-              
-            <!-- STOP BITS -->
-            <span class="col-xs-4">
-              <p>Stop bits:</p>
-              <div class="btn-group">
-                <label class="btn btn-default" ng-model="param_stop_bits" 
-                  btn-radio="'0'">None</label>
-                <label class="btn btn-default" ng-model="param_stop_bits" 
-                  btn-radio="'1'">1</label>
-              </div>
-            <span>
-          </div>
-          <div class="row">
+                  <label class="btn btn-default" ng-model="param_stop_bits" 
+                    btn-radio="'1'">1</label>
+                </div>
+              <span>
+            </div>
+            <div class="row">
+            </div>
           </div>
         </div>
       </div>
