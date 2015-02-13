@@ -37,10 +37,10 @@ angular.module('ngBoilerplate.binarysynth', [])
       } 
     } else {
       // RZ - half a period of the value, half of zero.
-      for( i = 0 ; i < param.period / 2 ; i++ ) {
+      for( i = 0 ; i < params.period / 2 ; i++ ) {
         writeSample( ((magnitude * 2) * val) - magnitude );
       }
-      for( i = 0 ; i < param.period / 2 ; i++ ) {
+      for( i = 0 ; i < params.period / 2 ; i++ ) {
         writeSample( 0 );
       }
     }
@@ -95,7 +95,7 @@ angular.module('ngBoilerplate.binarysynth', [])
   var expandText = function( input, repeat_count ) {
     var output;
     for( var i = 0 ; i < input.length ; i ++ ) {
-      var added = intput.charAt( i );
+      var added = input.charAt( i );
         for( var j = 0 ; j < repeat_count ; j++ ) {
           output += added.toString(); 
       }
@@ -106,6 +106,7 @@ angular.module('ngBoilerplate.binarysynth', [])
   var writeFrame = function( payload, params ) {
     var i;
     console.log("Frame Started");
+    console.log("encryption=" + params.encryption );
     // write start bits
     for( i = 0 ; i < (params.start_bits || 0) ; i++)  {
       writeBit( 1, params );
@@ -170,7 +171,7 @@ angular.module('ngBoilerplate.binarysynth', [])
   //   encryption
   // 
   return function( params ) {
-    console.log("Invoked binarySynth");
+    console.log("Invoked binarySynth: encoding=" + params.encoding);
 
     output = [];
     write_pointer = 0;
