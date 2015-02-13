@@ -18,6 +18,7 @@
                 ng-model="param_text">
               </textarea>
             </div>
+            <br/>
             <div class="row">
               <!-- REPEAT COUNT --> 
               <span class="col-xs-4">
@@ -73,23 +74,14 @@
                   </div>
                 </p>
               </div>
-          
-          
-              <!-- ENCODING -->
-              <span class="col-xs-4">
-                <p>Encoding:</p>
-                <div class="btn-group">
-                  <label class="btn btn-default" ng-model="param_encoding" 
-                      btn-radio="'NRZ'">NRZ</label>
-                  <label class="btn btn-default" ng-model="param_encoding" 
-                      btn-radio="'RZ'">RZ</label>
-                </div>
-              </span>
-              <span class="cp-sm-4">
-                <p>Else</p>
-              </span>
             </div>
+            
             <div class="row">
+              <!-- MTU --> 
+              <span class="col-xs-4">
+                <p>MTU: <input ng-model="param_mtu" size="5"> </p>
+              </span>
+
               <!-- START BITS -->
               <span class="col-xs-4">
                 <!--Start bits: -->
@@ -101,9 +93,9 @@
                      btn-radio="'1'">1</label>
                    <label class="btn btn-default" ng-model="param_start_bits" 
                       btn-radio="'2'">2</label>
-                 </div>
+                </div>
               </span>
-                
+
               <!-- STOP BITS -->
               <span class="col-xs-4">
                 <p>Stop bits:</p>
@@ -116,6 +108,25 @@
               <span>
             </div>
             <div class="row">
+              <!-- PERIOD --> 
+              <span class="col-xs-4">
+                <p>Period: <input ng-model="param_period" size="5"> </p>
+              </span>
+
+              <!-- ENCODING -->
+              <span class="col-xs-4">
+                <p>Encoding:</p>
+                <div class="btn-group">
+                  <label class="btn btn-default" ng-model="param_encoding" 
+                      btn-radio="'NRZ'">NRZ</label>
+                  <label class="btn btn-default" ng-model="param_encoding" 
+                      btn-radio="'RZ'">RZ</label>
+                </div>
+              </span>
+              <!-- FRAME GAP --> 
+              <span class="col-xs-4">
+                <p>Frame gap: <input ng-model="param_frame_gap" size="5">ms</p>
+              </span>
             </div>
           </div>
         </div>
