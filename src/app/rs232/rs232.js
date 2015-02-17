@@ -1,4 +1,4 @@
-angular.module( 'ngBoilerplate.binary', [
+angular.module( 'ngBoilerplate.rs232', [
   'ui.router',
   'placeholders',
   'ui.bootstrap',
@@ -7,33 +7,33 @@ angular.module( 'ngBoilerplate.binary', [
 ])
 
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'binary', {
-    url: '/binary',
+  $stateProvider.state( 'rs232', {
+    url: '/rs232',
     views: {
       "main": {
-        controller: 'BinaryCtrl',
-        templateUrl: 'binary/binary.tpl.html'
+        controller: 'RS232Ctrl',
+        templateUrl: 'rs232/rs232.tpl.html'
       }
     },
-    data:{ pageTitle: 'Binary Frame Generator' }
+    data:{ pageTitle: 'RS-232 Frame Generator' }
   });
 })
 
-.controller( 'BinaryCtrl', function BinaryCtrl( $scope, playerService, binarySynth ) {
+.controller( 'RS232Ctrl', function RS232Ctrl( $scope, playerService, binarySynth ) {
   
   $scope.defaults = function() {
-    $scope.param_text = 'Enter the payload for you binary frame here';
+    $scope.param_text = 'ATDT07941988461\nCONNECT\nHANGUP';
     $scope.param_period = '30';
-    $scope.param_start_bits = '0';
-    $scope.param_stop_bits = '0';
-    $scope.param_frame_gap = '20';
+    $scope.param_start_bits = '1';
+    $scope.param_stop_bits = '1';
+    $scope.param_frame_gap = '0';
     $scope.param_repeat_count = '0';
-    $scope.param_sevenbit = '1';
+    $scope.param_sevenbit = '0';
     $scope.param_big_endian = '1';
     $scope.param_parity = '0';
     $scope.param_checksum = '0';
-    $scope.param_mtu = '1500';
-    $scope.param_encoding = 'RZ';
+    $scope.param_mtu = '1';
+    $scope.param_encoding = 'NRZ';
     $scope.param_encryption = "0";
   }; 
 
@@ -41,7 +41,7 @@ angular.module( 'ngBoilerplate.binary', [
 
   // set our callback
   playerService.setStateChangeCallback( function( state ) {
-    console.log("BinaryCtrl.callback: state=" + state );
+    console.log("RS232Ctrl.callback: state=" + state );
     $scope.update();
     $scope.$apply();
   } );
@@ -52,14 +52,7 @@ angular.module( 'ngBoilerplate.binary', [
     $scope.message = playerService.getStatus();
   };
 
-  $scope.callCount = function() {
-    console.log("GDR: callCount()" );
-    playerService.count();
-    $scope.update( );
-  };
-
   $scope.startPow = function() {
-    console.log("GDR: startPow()");
     var params = {
       text: $scope.param_text,
       period: parseInt($scope.param_period, 10 ),
@@ -80,7 +73,6 @@ angular.module( 'ngBoilerplate.binary', [
   };
   
   $scope.stopPow = function() {
-    console.log("GDR: stopPow()");
     playerService.stopPow();
     $scope.update( );
   };

@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-sm-8">
+    <div class="panel panel-primary"> 
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          RS-232 Frame Generator
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <!-- TEXT -->
+          <textarea 
+            rows='3'
+            style="resize: none;" 
+            class="col-xs-12" 
+            ng-model="param_text">
+          </textarea>   
+        </div>
+        <br/>
+        <div class="row">
+          <!-- REPEAT COUNT -->
+          <span class="col-xs-4">
+            <p>Char repeat: <input ng-model="param_repeat_count" size="3"> </p>
+          </span> 
+          <!-- ENCRYPTION -->
+          <span class="col-xs-4">
+            <input type="checkbox" ng-model="param_encryption"
+              ng-true-value="1" ng-false-value="0">
+              Encrypt
+          </span>
+          <div class="col-xs-4">
+            <!-- 7/8 BIT -->
+            <p>Data:</p>
+              <div class="btn-group">
+                <label class="btn btn-default" ng-model="param_sevenbit" 
+                  btn-radio="'1'">7-bit</label>
+                <label class="btn btn-default" ng-model="param_sevenbit" 
+                  btn-radio="'0'">8-bit</label>
+              </div>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <!-- PARITY -->
+            <p>Parity:</p>
+              <div class="btn-group">
+                <label class="btn btn-default" ng-model="param_parity" 
+                  btn-radio="'0'">None</label>
+                <label class="btn btn-default" ng-model="param_parity" 
+                  btn-radio="'1'">Odd</label>
+                <label class="btn btn-default" ng-model="param_parity" 
+                  btn-radio="'2'">Even</label>
+              </div>
+            </p>
+          </div>
+          <!-- START BITS -->
+          <span class="col-xs-4">
+            <p>Start bits:</p>
+            <div class="btn-group">
+               <label class="btn btn-default" ng-model="param_start_bits" 
+                  btn-radio="'0'">None</label>
+               <label class="btn btn-default" ng-model="param_start_bits" 
+                 btn-radio="'1'">1</label>
+               <label class="btn btn-default" ng-model="param_start_bits" 
+                  btn-radio="'2'">2</label>
+            </div>
+          </span>
+
+          <!-- STOP BITS -->
+          <span class="col-xs-4">
+            <p>Stop bits:</p>
+            <div class="btn-group">
+              <label class="btn btn-default" ng-model="param_stop_bits" 
+                btn-radio="'0'">None</label>
+              <label class="btn btn-default" ng-model="param_stop_bits" 
+                btn-radio="'1'">1</label>
+            </div>
+          <span>
+        </div>
+        <br>
+        <div class="row">
+          <!-- PERIOD --> 
+          <div class="col-xs-4">
+            <p>Period: <input ng-model="param_period" size="5"> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Audio 
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p class="text-default">
+          status={{ message }}
+        </p>
+        <i class="fa fa-play btn btn-primary" ng-click="startPow()"></i>
+        <i class="fa fa-stop btn btn-default" ng-click="stopPow()"></i>
+      </div>
+    </div>
+  </div>
+</div>
