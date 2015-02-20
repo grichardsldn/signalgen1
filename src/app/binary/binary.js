@@ -52,14 +52,8 @@ angular.module( 'ngBoilerplate.binary', [
     $scope.message = playerService.getStatus();
   };
 
-  $scope.callCount = function() {
-    console.log("GDR: callCount()" );
-    playerService.count();
-    $scope.update( );
-  };
-
   $scope.startPow = function() {
-    console.log("GDR: startPow()");
+    console.log("startPow()");
     var params = {
       text: $scope.param_text,
       period: parseInt($scope.param_period, 10 ),
@@ -80,7 +74,7 @@ angular.module( 'ngBoilerplate.binary', [
   };
   
   $scope.stopPow = function() {
-    console.log("GDR: stopPow()");
+    console.log("stopPow()");
     playerService.stopPow();
     $scope.update( );
   };
