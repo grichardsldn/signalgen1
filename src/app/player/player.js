@@ -111,6 +111,14 @@ angular.module('ngBoilerplate.player', [])
       this.setState('available');
     }
   };
+
+  this.isPlayAvailable = function() {
+    return (state === 'available' )?true:false;
+  };
+
+  this.isStopAvailable = function() {
+    return (state === 'playing' )?true:false;
+  };
 });
 
 

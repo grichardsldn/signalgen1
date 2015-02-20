@@ -50,6 +50,11 @@ angular.module( 'ngBoilerplate.rs232', [
 
   $scope.update = function( ) {
     $scope.message = playerService.getStatus();
+    $scope.play_class =
+      (playerService.isPlayAvailable())?"btn-primary":"btn-default";
+    $scope.stop_class =
+      (playerService.isStopAvailable())?"btn-primary":"btn-default";
+
   };
 
   $scope.startPow = function() {
