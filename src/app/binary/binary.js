@@ -48,7 +48,6 @@ angular.module( 'ngBoilerplate.binary', [
 
   $scope.framingSetting = "15"; 
 
-
   $scope.update = function( ) {
     $scope.message = playerService.getStatus();
 
@@ -76,21 +75,19 @@ angular.module( 'ngBoilerplate.binary', [
       context.lineTo( width, (height/2));
       context.stroke();
     }
+    $scope.play_class = 
+      (playerService.isPlayAvailable())?"btn-primary":"btn-default";
+    $scope.stop_class = 
+      (playerService.isStopAvailable())?"btn-primary":"btn-default";
   };
   
   $scope.change = function() {
     $scope.update();
   };
 
-  $scope.callCount = function() {
-    console.log("GDR: callCount()" );
-    playerService.count();
-    $scope.update( );
-  };
-
   $scope.buildParams = function() {
     var params = {
-      text: $scope.param_text,
+      text: $scope.param_text || '', 
       period: parseInt($scope.param_period, 10 ),
       start_bits: parseInt($scope.param_start_bits, 10),
       stop_bits: parseInt($scope.param_stop_bits, 10),
@@ -106,7 +103,6 @@ angular.module( 'ngBoilerplate.binary', [
     };
     return params;
   };
-
   $scope.startPow = function() {
     console.log("GDR: startPow()");
     playerService.startSynth( binarySynth, this.buildParams() );

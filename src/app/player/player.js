@@ -2,12 +2,6 @@ angular.module('ngBoilerplate.player', [])
 
 .service('playerService', function() {
   console.log("GDR: count factory invoked");
-  var num = 0;
-  this.count = function() {
-    console.log("GDR: count invoked");
-    num++;
-    return num; 
-  };
 
   this.setState = function( newstate ) {
     console.log( 'state: ' + state + ' -> ' + newstate);
@@ -116,6 +110,14 @@ angular.module('ngBoilerplate.player', [])
       absn.disconnect(gainnode);
       this.setState('available');
     }
+  };
+
+  this.isPlayAvailable = function() {
+    return (state === 'available' )?true:false;
+  };
+
+  this.isStopAvailable = function() {
+    return (state === 'playing' )?true:false;
   };
 });
 
