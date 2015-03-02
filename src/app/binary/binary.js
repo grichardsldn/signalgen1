@@ -48,8 +48,38 @@ angular.module( 'ngBoilerplate.binary', [
 
   $scope.framingSetting = "15"; 
 
+
   $scope.update = function( ) {
     $scope.message = playerService.getStatus();
+
+    // draw the oscilloscope
+    var canvas = document.getElementById("scopecanvas");
+    var context = canvas.getContext("2d");
+    context.fillStyle="gray";
+    var width = canvas.width;
+    var height = canvas.height;
+    context.clearRect(0, 0, width, height);
+    var fsd = (height/2) * 0.8;
+    var front_porch = 20;
+    var raw_data = binarySynth( this.buildParams() );
+    if( raw_data.length > 0 ) {
+      context.beginPath();
+      context.moveTo(0, (height/2));
+      context.lineTo( front_porch, (height/2) );
+      for ( var i= front_porch ; i < width ; i ++ ) {
+        context.lineTo( i, (raw_data[i - front_porch] * fsd)+(height/2));
+      }
+      context.stroke();
+    } else {
+      context.beginPath();
+      context.moveTo(0, (height/2) );
+      context.lineTo( width, (height/2));
+      context.stroke();
+    }
+  };
+  
+  $scope.change = function() {
+    $scope.update();
   };
 
   $scope.callCount = function() {
@@ -58,8 +88,7 @@ angular.module( 'ngBoilerplate.binary', [
     $scope.update( );
   };
 
-  $scope.startPow = function() {
-    console.log("GDR: startPow()");
+  $scope.buildParams = function() {
     var params = {
       text: $scope.param_text,
       period: parseInt($scope.param_period, 10 ),
@@ -75,7 +104,12 @@ angular.module( 'ngBoilerplate.binary', [
       encoding: $scope.param_encoding,
       encryption: parseInt($scope.param_encryption, 10 )
     };
-    playerService.startSynth( binarySynth, params );
+    return params;
+  };
+
+  $scope.startPow = function() {
+    console.log("GDR: startPow()");
+    playerService.startSynth( binarySynth, this.buildParams() );
     $scope.update( );
   };
   

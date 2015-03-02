@@ -25,8 +25,8 @@ angular.module('ngBoilerplate.binarysynth', [])
   // write a logic of 'bit' of data using the specific bit encoding
   var writeBit = function( val, params ) {
     var magnitude = 0.9; // most of Full Scale Defelection
-    val = Math.floor( val) & 1; // get the LSB
-    console.log("writeBit: " + write_pointer + '=' + val );
+    // val = Math.floor( val) & 1; // get the LSB
+    //console.log("writeBit: " + write_pointer + '=' + val );
     var i;
     if (val === 1 ) {
       frame_ones_total ++;

@@ -13,6 +13,7 @@
             rows='3'
             style="resize: none;" 
             class="col-xs-12" 
+            ng-change="change()" 
             ng-model="param_text">
           </textarea>   
         </div>
@@ -20,17 +21,20 @@
         <div class="row">
           <!-- REPEAT COUNT -->
           <span class="col-xs-4">
-            <p>Char repeat: <input ng-model="param_repeat_count" size="3"> </p>
+            <p>Char repeat: <input ng-change="change()" 
+              ng-model="param_repeat_count" size="3"> </p>
           </span> 
           <!-- ENCRYPTION -->
           <span class="col-xs-4">
-            <input type="checkbox" ng-model="param_encryption"
+            <input type="checkbox" ng-change="change()" 
+              ng-model="param_encryption"
               ng-true-value="1" ng-false-value="0">
               Encrypt
           </span>
           <!-- CHECKSUM -->
           <span class="col-xs-4">
-            <input type="checkbox" ng-model="param_checksum"
+            <input type="checkbox" ng-change="change()" 
+              ng-model="param_checksum"
               ng-true-value="1" ng-false-value="0">
               Checksum 
           </span>
@@ -40,20 +44,23 @@
             <!-- BIG_ENDIAN -->
             <p>Endianism:</p>
             <div class="btn-group">
-              <label class="btn btn-default" ng-model="param_big_endian" 
-                 btn-radio="'1'">Big</label>
-              <label class="btn btn-default" ng-model="param_big_endian" 
-                 btn-radio="'0'">Little</label>
+              <label class="btn btn-default" 
+                ng-change="change()" ng-model="param_big_endian" 
+                btn-radio="'1'">Big</label>
+              <label class="btn btn-default" 
+                ng-change="change()" ng-model="param_big_endian" 
+                btn-radio="'0'">Little</label>
             </div>
           </div>
           <div class="col-xs-4">
             <!-- 7/8 BIT -->
             <p>Data:</p>
               <div class="btn-group">
-                <label class="btn btn-default" ng-model="param_sevenbit" 
+                <label class="btn btn-default" 
+                  ng-change="change()" ng-model="param_sevenbit" 
                   btn-radio="'1'">7-bit</label>
                 <label class="btn btn-default" ng-model="param_sevenbit" 
-                  btn-radio="'0'">8-bit</label>
+                  ng-change="change()" btn-radio="'0'">8-bit</label>
               </div>
             </p>
           </div>
@@ -62,11 +69,11 @@
             <p>Parity:</p>
               <div class="btn-group">
                 <label class="btn btn-default" ng-model="param_parity" 
-                  btn-radio="'0'">None</label>
+                  btn-radio="'0'" ng-change="change()">None</label>
                 <label class="btn btn-default" ng-model="param_parity" 
-                  btn-radio="'1'">Odd</label>
+                  btn-radio="'1'" ng-change="change()">Odd</label>
                 <label class="btn btn-default" ng-model="param_parity" 
-                  btn-radio="'2'">Even</label>
+                  btn-radio="'2'" ng-change="change()">Even</label>
               </div>
             </p>
           </div>
@@ -75,7 +82,8 @@
         <div class="row">
           <!-- MTU -->
           <span class="col-xs-4">
-            <p>MTU: <input ng-model="param_mtu" size="5"> </p>
+            <p>MTU: <input ng-model="param_mtu" ng-change="change()" 
+              size="5"> </p>
           </span> 
 
           <!-- START BITS -->
@@ -83,11 +91,11 @@
             <p>Start bits:</p>
             <div class="btn-group">
                <label class="btn btn-default" ng-model="param_start_bits" 
-                  btn-radio="'0'">None</label>
+                  btn-radio="'0'" ng-change="change()">None</label>
                <label class="btn btn-default" ng-model="param_start_bits" 
-                 btn-radio="'1'">1</label>
+                 btn-radio="'1'" ng-change="change()">1</label>
                <label class="btn btn-default" ng-model="param_start_bits" 
-                  btn-radio="'2'">2</label>
+                  btn-radio="'2'" ng-change="change()">2</label>
             </div>
           </span>
 
@@ -96,17 +104,18 @@
             <p>Stop bits:</p>
             <div class="btn-group">
               <label class="btn btn-default" ng-model="param_stop_bits" 
-                btn-radio="'0'">None</label>
+                btn-radio="'0'" ng-change="change()">None</label>
               <label class="btn btn-default" ng-model="param_stop_bits" 
-                btn-radio="'1'">1</label>
+                btn-radio="'1'" ng-change="change()">1</label>
             </div>
           <span>
         </div>
-        <br>
+        <br/>
         <div class="row">
           <!-- PERIOD --> 
           <div class="col-xs-4">
-            <p>Period: <input ng-model="param_period" size="5"> </p>
+            <p>Period: <input ng-model="param_period" 
+              ng-change="change()" size="5"> </p>
           </div>
 
           <!-- ENCODING -->
@@ -114,15 +123,20 @@
             <p>Encoding:</p>
             <div class="btn-group">
               <label class="btn btn-default" ng-model="param_encoding" 
-                  btn-radio="'NRZ'">NRZ</label>
+                  btn-radio="'NRZ'" ng-change="change()">NRZ</label>
               <label class="btn btn-default" ng-model="param_encoding" 
-                  btn-radio="'RZ'">RZ</label>
+                  btn-radio="'RZ'" ng-change="change()">RZ</label>
             </div>
           </span>
           <!-- FRAME GAP --> 
           <span class="col-xs-4">
-            <p>Frame gap: <input ng-model="param_frame_gap" size="5">ms</p>
+            <p>Frame gap: <input ng-model="param_frame_gap"
+              ng-change="change()"size="5">ms</p>
           </span>
+        </div>
+        <br>
+        <div class="row">
+          <canvas id="scopecanvas" class="col-xs-12" height="75"></canvas>
         </div>
       </div>
     </div>
